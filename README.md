@@ -1,1 +1,2 @@
 The Adventures of Sir Bounce a Lot is a fun and simple platformer game that involves a prince who attempts to save his sweetheart, princess Aurelia from an evil dragon. Throughout his journey, he is challenged with all types of obstructions and at the end must fight the dragon. The game involves many bouncy mechanics and physics based challenges that players must figure out how to overcome to win the game.
+[![Play on itch.io](https://img.shields.io/badge/Play%20Now-itch.io-FA5C5C?style=for-the-badge&logo=itch.io&logoColor=white)](https://sirbouncealot.itch.io/game)
