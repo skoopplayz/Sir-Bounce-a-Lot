@@ -1,0 +1,250 @@
+[gd_scene load_steps=5 format=3 uid="uid://m1n2p3q4r5s6"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://scenes/characters/prince.tscn" id="2_prince"]
+[ext_resource type="PackedScene" path="res://scenes/characters/princess.tscn" id="3_princess"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trampoline.tscn" id="4_tramp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.93, 0.95, 0.98, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(1, 1, 1, 0.95)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="TitleContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_right = 400.0
+offset_bottom = 220.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="TitleContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 70.0
+offset_right = 350.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.96, 0.28, 0.42, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.12, 0.18, 0.25)
+theme_override_colors/font_outline_color = Color(0.22, 0.14, 0.2, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 54
+text = "SIR BOUNCE-A-LOT"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="TitleContainer"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 148.0
+offset_right = 300.0
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.25, 0.78, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.15, 0.22, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 22
+text = "Rescue Princess Aurelia from the Grand Bouncy Castle!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -20.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="BtnStart" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "START ADVENTURE"
+
+[node name="BtnLevelSelect" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "LEVEL SELECT"
+
+[node name="BtnControls" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "HOW TO PLAY & CONTROLS"
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="TrampolineLeft" parent="Decorations" instance=ExtResource("4_tramp")]
+position = Vector2(240, 560)
+
+[node name="TrampolineRight" parent="Decorations" instance=ExtResource("4_tramp")]
+position = Vector2(1040, 560)
+
+[node name="PrincessDecor" parent="Decorations" instance=ExtResource("3_princess")]
+position = Vector2(1040, 480)
+is_caged = false
+
+[node name="PrinceDecor" parent="Decorations" instance=ExtResource("2_prince")]
+position = Vector2(240, 480)
+
+[node name="LevelSelectPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -140.0
+offset_right = 280.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="LevelSelectPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="LevelSelectPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.15, 0.22, 1)
+theme_override_font_sizes/font_size = 24
+text = "SELECT LEVEL"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="LevelSelectPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnL1" type="Button" parent="LevelSelectPanel/VBox/HBox"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+text = "Level 1\nCourtyard"
+
+[node name="BtnL2" type="Button" parent="LevelSelectPanel/VBox/HBox"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+text = "Level 2\nSeesaws"
+
+[node name="BtnL3" type="Button" parent="LevelSelectPanel/VBox/HBox"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+text = "Level 3\nSpire"
+
+[node name="BtnL4" type="Button" parent="LevelSelectPanel/VBox/HBox"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+text = "Level 4\nDragon Boss"
+
+[node name="BtnCloseLevels" type="Button" parent="LevelSelectPanel/VBox"]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="ControlsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="ControlsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 20.0
+offset_right = -24.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="ControlsPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.15, 0.22, 1)
+theme_override_font_sizes/font_size = 24
+text = "HOW TO PLAY & PHYSICS MECHANICS"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="ControlsPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.22, 0.3, 1)
+theme_override_font_sizes/font_size = 15
+text = "• [A / D / Left / Right]: Move horizontally with bouncy inertia.
+• [SPACE / W / Up]: Jump snappy and high.
+• [S / DOWN] on Ground: SQUASH & CHARGE! Hold to squash like an elastic spring, release to catapult into an astronomical SUPER BOUNCE!
+• [S / DOWN] in Mid-Air: GROUND POUND! Slam down fast, trigger shockwaves, launch seesaws and pop breakables!
+• TRAMPOLINES: Time your jump right as you touch a trampoline for a PERFECT BOUNCE!
+• SEESAW CATAPULTS: Ground pound one side to launch objects or yourself to the castle spires!
+• DRAGON BOSS: Bounce high and ground pound onto the dragon's bouncy belly weak point!"
+autowrap_mode = 2
+
+[node name="BtnCloseControls" type="Button" parent="ControlsPanel/VBox"]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Got It!"

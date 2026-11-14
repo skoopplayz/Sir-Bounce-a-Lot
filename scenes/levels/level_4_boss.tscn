@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://lv4_dragon_boss_arena"]
+
+[ext_resource type="Script" path="res://scripts/objects/castle_background.gd" id="1_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/objects/bouncy_camera.gd" id="3_cam"]
+[ext_resource type="PackedScene" path="res://scenes/characters/prince.tscn" id="4_prince"]
+[ext_resource type="PackedScene" path="res://scenes/characters/princess.tscn" id="5_princess"]
+[ext_resource type="PackedScene" path="res://scenes/characters/dragon_boss.tscn" id="6_boss"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bouncy_platform.tscn" id="7_plat"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trampoline.tscn" id="8_tramp"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pinball_bumper.tscn" id="9_bumper"]
+[ext_resource type="PackedScene" path="res://scenes/objects/seesaw.tscn" id="10_seesaw"]
+[ext_resource type="PackedScene" path="res://scenes/objects/checkpoint.tscn" id="11_cp"]
+
+[node name="Level4Boss" type="Node2D"]
+
+[node name="CastleBackground" type="Node2D" parent="."]
+script = ExtResource("1_bg")
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+script = ExtResource("3_cam")
+
+[node name="Prince" parent="." instance=ExtResource("4_prince")]
+position = Vector2(280, 560)
+
+[node name="Princess" parent="." instance=ExtResource("5_princess")]
+position = Vector2(640, 80)
+is_caged = true
+
+[node name="DragonBoss" parent="." instance=ExtResource("6_boss")]
+position = Vector2(640, 240)
+princess_node = NodePath("../Princess")
+
+[node name="ArenaBounds" type="Node2D" parent="."]
+
+[node name="ArenaFloor" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(640, 640)
+size = Vector2(1300, 70)
+platform_color = Color(0.96, 0.45, 0.58, 1)
+
+[node name="LeftWall" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(30, 320)
+size = Vector2(60, 680)
+platform_color = Color(0.65, 0.45, 0.88, 1)
+
+[node name="RightWall" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(1250, 320)
+size = Vector2(60, 680)
+platform_color = Color(0.65, 0.45, 0.88, 1)
+
+[node name="Ceiling" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(640, -40)
+size = Vector2(1300, 60)
+platform_color = Color(0.3, 0.82, 0.88, 1)
+
+[node name="LeftLedge" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(160, 420)
+size = Vector2(180, 36)
+platform_color = Color(0.3, 0.82, 0.88, 1)
+
+[node name="RightLedge" parent="ArenaBounds" instance=ExtResource("7_plat")]
+position = Vector2(1120, 420)
+size = Vector2(180, 36)
+platform_color = Color(0.3, 0.82, 0.88, 1)
+
+[node name="InteractiveObjects" type="Node2D" parent="."]
+
+[node name="Checkpoint1" parent="InteractiveObjects" instance=ExtResource("11_cp")]
+position = Vector2(160, 395)
+
+[node name="CenterSeesaw" parent="InteractiveObjects" instance=ExtResource("10_seesaw")]
+position = Vector2(640, 595)
+
+[node name="TrampolineLeft" parent="InteractiveObjects" instance=ExtResource("8_tramp")]
+position = Vector2(340, 605)
+
+[node name="TrampolineRight" parent="InteractiveObjects" instance=ExtResource("8_tramp")]
+position = Vector2(940, 605)
+
+[node name="WallBumperLeft" parent="InteractiveObjects" instance=ExtResource("9_bumper")]
+position = Vector2(90, 260)
+
+[node name="WallBumperRight" parent="InteractiveObjects" instance=ExtResource("9_bumper")]
+position = Vector2(1190, 260)

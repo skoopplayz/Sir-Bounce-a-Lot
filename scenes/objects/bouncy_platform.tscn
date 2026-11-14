@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://p8v6n4m2k1q7"]
+
+[ext_resource type="Script" path="res://scripts/objects/bouncy_platform.gd" id="1_platform"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(200, 48)
+
+[node name="BouncyPlatform" type="StaticBody2D"]
+collision_mask = 3
+script = ExtResource("1_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")

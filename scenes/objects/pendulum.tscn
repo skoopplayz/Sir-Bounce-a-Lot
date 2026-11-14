@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://x9m7v5k3q1r2"]
+
+[ext_resource type="Script" path="res://scripts/objects/pendulum.gd" id="1_pendulum"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 26.0
+
+[node name="Pendulum" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_pendulum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 160)
+shape = SubResource("CircleShape2D_1")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://f4n6m8p2q1v5"]
+
+[ext_resource type="Script" path="res://scripts/objects/fire_bubble.gd" id="1_bubble"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1"]
+friction = 0.1
+bounce = 0.95
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[node name="FireBubble" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_1")
+script = ExtResource("1_bubble")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 14
+lifetime = 0.35
+one_shot = true
+explosiveness = 0.85
+spread = 180.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 80.0
+initial_velocity_max = 180.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color = Color(1, 0.5, 0.15, 1)

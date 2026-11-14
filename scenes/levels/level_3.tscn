@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=3 uid="uid://lv3_cloud_spire"]
+
+[ext_resource type="Script" path="res://scripts/objects/castle_background.gd" id="1_bg"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/objects/bouncy_camera.gd" id="3_cam"]
+[ext_resource type="PackedScene" path="res://scenes/characters/prince.tscn" id="4_prince"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bouncy_platform.tscn" id="5_plat"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trampoline.tscn" id="6_tramp"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pinball_bumper.tscn" id="7_bumper"]
+[ext_resource type="PackedScene" path="res://scenes/objects/air_blower.tscn" id="8_blower"]
+[ext_resource type="PackedScene" path="res://scenes/objects/pendulum.tscn" id="9_pendulum"]
+[ext_resource type="PackedScene" path="res://scenes/objects/collectible_ring.tscn" id="10_ring"]
+[ext_resource type="PackedScene" path="res://scenes/objects/goal_gate.tscn" id="11_gate"]
+[ext_resource type="PackedScene" path="res://scenes/objects/checkpoint.tscn" id="12_cp"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="CastleBackground" type="Node2D" parent="."]
+script = ExtResource("1_bg")
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, 600)
+script = ExtResource("3_cam")
+
+[node name="Prince" parent="." instance=ExtResource("4_prince")]
+position = Vector2(200, 600)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="BaseGround" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(300, 680)
+size = Vector2(600, 60)
+platform_color = Color(0.96, 0.45, 0.58, 1)
+
+[node name="Tier1" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(650, 520)
+size = Vector2(180, 36)
+platform_color = Color(0.3, 0.82, 0.88, 1)
+
+[node name="Tier2" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(320, 380)
+size = Vector2(200, 36)
+platform_color = Color(0.98, 0.78, 0.25, 1)
+
+[node name="Tier3" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(650, 220)
+size = Vector2(220, 36)
+platform_color = Color(0.65, 0.45, 0.88, 1)
+
+[node name="Tier4" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(1050, 160)
+size = Vector2(240, 36)
+platform_color = Color(0.3, 0.82, 0.88, 1)
+
+[node name="SpirePeak" parent="Platforms" instance=ExtResource("5_plat")]
+position = Vector2(1480, 40)
+size = Vector2(280, 50)
+platform_color = Color(0.96, 0.45, 0.58, 1)
+
+[node name="InteractiveObjects" type="Node2D" parent="."]
+
+[node name="Checkpoint1" parent="InteractiveObjects" instance=ExtResource("12_cp")]
+position = Vector2(720, 195)
+
+[node name="TrampolineBase" parent="InteractiveObjects" instance=ExtResource("6_tramp")]
+position = Vector2(460, 650)
+
+[node name="TrampolineTier1" parent="InteractiveObjects" instance=ExtResource("6_tramp")]
+position = Vector2(650, 490)
+
+[node name="TrampolineTier2" parent="InteractiveObjects" instance=ExtResource("6_tramp")]
+position = Vector2(320, 350)
+
+[node name="AirBlowerSpire" parent="InteractiveObjects" instance=ExtResource("8_blower")]
+position = Vector2(850, 450)
+stream_height = 360.0
+
+[node name="Bumper1" parent="InteractiveObjects" instance=ExtResource("7_bumper")]
+position = Vector2(480, 260)
+
+[node name="Bumper2" parent="InteractiveObjects" instance=ExtResource("7_bumper")]
+position = Vector2(850, 40)
+
+[node name="Bumper3" parent="InteractiveObjects" instance=ExtResource("7_bumper")]
+position = Vector2(1250, 80)
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="Pendulum1" parent="Hazards" instance=ExtResource("9_pendulum")]
+position = Vector2(480, 100)
+length = 120.0
+
+[node name="Pendulum2" parent="Hazards" instance=ExtResource("9_pendulum")]
+position = Vector2(1250, -80)
+length = 130.0
+
+[node name="Rings" type="Node2D" parent="."]
+
+[node name="Ring1" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(460, 520)
+
+[node name="Ring2" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(650, 400)
+
+[node name="Ring3" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(480, 180)
+
+[node name="Ring4" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(850, 240)
+
+[node name="Ring5" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(850, -30)
+
+[node name="Ring6" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(1050, 80)
+
+[node name="Ring7" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(1250, 0)
+
+[node name="Ring8" parent="Rings" instance=ExtResource("10_ring")]
+position = Vector2(1380, -20)
+
+[node name="GoalGate" parent="." instance=ExtResource("11_gate")]
+position = Vector2(1480, 15)

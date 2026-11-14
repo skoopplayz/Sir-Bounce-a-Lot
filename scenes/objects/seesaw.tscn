@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://v4n8p2q6m1w9"]
+
+[ext_resource type="Script" path="res://scripts/objects/seesaw.gd" id="1_seesaw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 24.0
+
+[node name="Seesaw" type="Node2D"]
+script = ExtResource("1_seesaw")
+
+[node name="SolidBody" type="StaticBody2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SolidBody"]
+
+[node name="LeftPad" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPad"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="RightPad" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPad"]
+shape = SubResource("CircleShape2D_1")

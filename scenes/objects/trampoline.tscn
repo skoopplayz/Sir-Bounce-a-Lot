@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6v5m4k2p1q8"]
+
+[ext_resource type="Script" path="res://scripts/objects/trampoline.gd" id="1_tramp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(120, 24)
+
+[node name="Trampoline" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_tramp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_1")

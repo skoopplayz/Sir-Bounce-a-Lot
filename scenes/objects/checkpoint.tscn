@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cp1m4k6w8q2n7"]
+
+[ext_resource type="Script" path="res://scripts/objects/checkpoint.gd" id="1_cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(70, 110)
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -50)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -95)
+emitting = false
+amount = 22
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.92
+spread = 180.0
+gravity = Vector2(0, 180)
+initial_velocity_min = 100.0
+initial_velocity_max = 220.0
+scale_amount_min = 3.5
+scale_amount_max = 7.5
+color = Color(1, 0.88, 0.25, 1)
